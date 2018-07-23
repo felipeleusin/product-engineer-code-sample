@@ -48,7 +48,7 @@ curl -H "Content-Type: application/json" -H "Authorization: YOUR_API_KEY_HERE" -
 
 ## Quickstart
 
-Feel free to set up the project however you think best; however, if you'd like to skip the rigamarole of setting up the app, instructions are provided below to use [create-create-app](https://github.com/facebook/create-react-app).
+Feel free to set up the project however you think best; however, if you'd like to skip the rigamarole of setting up the app, instructions are provided below to use [create-react-app](https://github.com/facebook/create-react-app).
 
 ```sh
 npx create-react-app .
