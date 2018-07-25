@@ -1,8 +1,9 @@
 /* eslint-disable import/no-extraneous-dependencies */
-// import Enzyme from 'enzyme'
-// import Adapter from 'enzyme-adapter-react-16'
-import 'jest-styled-components'
+// import 'jest-styled-components'
 import 'jest-dom/extend-expect'
 import 'react-testing-library/cleanup-after-each'
+import mockAxios from 'jest-mock-axios'
 
-// Enzyme.configure({ adapter: new Adapter() })
+afterEach(() => {
+  mockAxios.reset()
+})

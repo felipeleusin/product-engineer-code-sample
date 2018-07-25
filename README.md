@@ -1,56 +1,17 @@
 # Product Engineer Code Sample
 
-Lucid is the world’s largest audience platform for sourcing and understanding real, deterministic data about human behavior at scale. The company has built the largest and most powerful programmatic survey exchange.
-
-We'd like you to build a small app using our official API to create a survey on the platform according to these [instructions](#instructions).
-
-## Evaluation
-
-This app could be written in many different ways. The main things we are looking for are how you approach:
-
-- component organization
-- state management
-- data fetching
-- error handling
-
-## Help
-
-It's not necessary to spend more than a few hours on this assignment. One of our teammembers will be available for you to ask as many questions as you need.
-
-## Requirements
-
-- implement the app using [react](https://github.com/facebook/react)
-
 ## Instructions
 
 Please implement a form to create a new survey. A [mockup](./create-survey-form.png) is provided for visual reference on the inputs that should be included and how the form should look. It does not need to be pixel perfect. You'll need to fetch the locales that are supported on our platform to populate the select component. In addition to the form, add a "Success!" view that can look however you'd like.
 
-![mockup](./create-survey-form.png)
+## Implementation
 
+I implemented the code with two main components (located in folder /src/components) one handling the Form and the other handling the Fetching of the locales. To keep things simple I didn't used Redux but it made sense to implement it as it would make testing more sustainable (those axiosMock calls can get messy and I could replace then for having a initialState).
 
-### API Notes
+For the UI library I chose to use Rebass that is a simplified CSS-in-JS library built on top of styled-components.
 
-#### Fetching Locales
-The data for the `Locale` input can be fetched using the [/dictionary-beta/locales](https://developer.lucidhq.com/#dictionary-beta) endpoint. See the [documentation](https://developer.lucidhq.com/#dictionary-beta) for an example response payload.
+For testing I used react-testing-library instead of the usual enzyme. While it proved as a interesting way to test components it has some drawbacks because it's harder to test react components properties and interactions since you are always working over DOM.
 
-```sh
-curl -H "Authorization: YOUR_API_KEY_HERE" "https://stg-api.samplicio.us/demand/v2-beta/locales"
+For data fetching I resorted to simple axios calls, on a bigger project I would structure then either as redux actions (I'm personally a big fan of redux-axios-middleware).
 
-```
-
-#### Creating A Survey
-The new survey can be created using the [post-create-a-survey-beta](https://developer.lucidhq.com/?shell#post-create-a-survey-beta) endpoint. Modify this example JSON payload with the `name` and `locale` collected by the app.
-
-```sh
-curl -H "Content-Type: application/json" -H "Authorization: YOUR_API_KEY_HERE" -X POST --data '{ "business_unit_id": 1056, "client_cpi_usd": 5, "collects_pii": true, "expected_completes": 10, "expected_completion_loi": 10, "expected_incidence_rate": 0.1, "fraud_profile": true, "fraud_profile_threshold": 13, "industry": "education", "live_url": "https://www.samplesurvey.com/", "locale": "eng_us", "name": "Test Survey", "priority": 13, "quantity_calc_type": "prescreens", "project_id": 124973, "relevant_id": true, "status": "pending", "study_type": "ihut", "survey_cpi_usd": 5, "test_url": "https://www.samplesurvey.com/test", "unique_ip": true, "unique_pid": true, "verify_callback": true
-}' https://stg-api.samplicio.us/demand/v2-beta/surveys
-```
-
-## Quickstart
-
-Feel free to set up the project however you think best; however, if you'd like to skip the rigamarole of setting up the app, instructions are provided below to use [create-react-app](https://github.com/facebook/create-react-app).
-
-```sh
-npx create-react-app .
-npm start
-```
+Also in a bigger project it would made sense to use a router and keep the specific pages in a /src/pages folder.
