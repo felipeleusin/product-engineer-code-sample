@@ -15,3 +15,9 @@ For testing I used react-testing-library instead of the usual enzyme. While it p
 For data fetching I resorted to simple axios calls, on a bigger project I would structure then either as redux actions (I'm personally a big fan of redux-axios-middleware).
 
 Also in a bigger project it would made sense to use a router and keep the specific pages in a /src/pages folder.
+
+## Tasks
+
+To start the server run npm start
+
+To run the test suite run npm test
