@@ -40,8 +40,8 @@ describe('<SurveryForm />', () => {
       mockAxios.post.mockResolvedValueOnce({ data: { result: [{ code: 'en', name: 'English' }] } })
 
       nameInput.value = 'Survey Name'
-      localeInput.value = 'en'
       fireEvent.change(nameInput)
+      localeInput.value = 'en'
       fireEvent.change(localeInput)
       fireEvent.click(button)
 
@@ -53,17 +53,17 @@ describe('<SurveryForm />', () => {
 
       const { getByText, getByLabelText } = render(<SurveyForm />)
 
-      const button = getByText('Create Survey')
-      const nameInput = getByLabelText(/name/i)
-      const localeInput = getByLabelText(/locale/i)
-
       await wait(() => expect(mockAxios.get).toHaveBeenCalledTimes(1))
 
       mockAxios.post.mockResolvedValueOnce({ id: '123152' })
 
+      const button = getByText('Create Survey')
+      const nameInput = getByLabelText(/name/i)
+      const localeInput = getByLabelText(/locale/i)
+
       nameInput.value = 'Survey Name'
-      localeInput.value = 'en'
       fireEvent.change(nameInput)
+      localeInput.value = 'en'
       fireEvent.change(localeInput)
       fireEvent.click(button)
 
@@ -85,8 +85,8 @@ describe('<SurveryForm />', () => {
         mockAxios.post.mockResolvedValueOnce({ id: '123152' })
 
         nameInput.value = 'Survey Name'
-        localeInput.value = 'en'
         fireEvent.change(nameInput)
+        localeInput.value = 'en'
         fireEvent.change(localeInput)
         fireEvent.click(button)
 
@@ -108,8 +108,8 @@ describe('<SurveryForm />', () => {
         await wait(() => expect(mockAxios.get).toHaveBeenCalledTimes(1))
 
         nameInput.value = 'Invalid Name'
-        localeInput.value = 'en'
         fireEvent.change(nameInput)
+        localeInput.value = 'en'
         fireEvent.change(localeInput)
         fireEvent.click(button)
 

@@ -11,6 +11,10 @@
   "jest": {
     "setupTestFrameworkScriptFile": "<rootDir>build/jest.config.js",
     "snapshotSerializers": [],
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx}",
+      "!<rootDir>/node_modules/"
+    ],
     "moduleNameMapper": {
       "\\.svg$": "<rootDir>/__mocks__/svgMock.js",
       "~(.*)$": "<rootDir>/src/$1"

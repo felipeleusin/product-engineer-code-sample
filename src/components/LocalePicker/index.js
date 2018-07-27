@@ -23,11 +23,14 @@ export default class LocalePicker extends Component {
     return (
       <Select {...this.props} disabled={!locales || error}>
         {locales ? (
-          locales.map(locale => (
-            <option key={locale.code} value={locale.code}>
-              {locale.name}
-            </option>
-          ))
+          <>
+            <option value="">Pick a locale</option>
+            {locales.map(locale => (
+              <option key={locale.code} value={locale.code}>
+                {locale.name}
+              </option>
+            ))}
+          </>
         ) : error ? (
           <option value="">{error}</option>
         ) : (
